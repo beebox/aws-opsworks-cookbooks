@@ -34,7 +34,7 @@ when 'redhat','centos','fedora','amazon'
   end
   default[:apache][:lib_dir]    = node[:kernel][:machine] =~ /^i[36']86$/ ? '/usr/lib/httpd' : '/usr/lib64/httpd'
   default[:apache][:libexecdir] = "#{node[:apache][:lib_dir]}/modules"
-  default[:apache][:document_root] = '/var/www/html/current'
+  set[:apache][:document_root] = '/var/www/html/current'
 when 'debian','ubuntu'
   default[:apache][:dir]         = '/etc/apache2'
   default[:apache][:log_dir]     = '/var/log/apache2'
