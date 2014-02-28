@@ -1,3 +1,5 @@
+# write template file
+
 template 'apache2.conf' do
   case node[:platform]
   when 'centos','redhat','fedora','amazon'
@@ -10,4 +12,12 @@ template 'apache2.conf' do
   group 'root'
   mode 0644
   # notifies :run, resources(:bash => 'logdir_existence_and_restart_apache2')
+end
+
+
+# restart apache
+
+service "httpd" do
+  supports :restart => true, :reload => true
+  action :restart
 end
