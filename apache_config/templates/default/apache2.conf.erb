@@ -386,3 +386,13 @@ KeepAlive On
 </Directory>
 
 #### End of AWS Settings ####
+
+LoadModule ssl_module modules/mod_ssl.so
+
+Listen 443
+<VirtualHost *:443>
+    SSLEngine on
+    SSLCertificateFile /etc/httpd/conf/temp-server.crt
+    SSLCertificateKeyFile /etc/httpd/conf/temp-privatekey.pem
+</VirtualHost>
+
